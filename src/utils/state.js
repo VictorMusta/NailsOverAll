@@ -15,10 +15,10 @@ export const STATE_DEFAULTS = Object.freeze({
   },
   spotlight: {
     enabled:    true,
-    radius:     220,  // px (base utilisée par les 2 spots avec un sizeMult)
-    shadow:     55,   // % (opacité du noir périphérique)
+    radius:     389,  // px (base utilisée par les 2 spots avec un sizeMult)
+    shadow:     85,   // % (opacité du noir périphérique)
     sharpness:  60,   // % (0 = très flou, 100 = très net)
-    smoothness: 4,    // /100 = lerp speed par frame
+    smoothness: 7,    // /100 = lerp speed par frame
   },
   /* Nom du thème actif. Propage data-theme sur <html> et permet aux
      CSS de scoper des patterns décoratifs à un thème spécifique. */

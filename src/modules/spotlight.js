@@ -68,6 +68,15 @@ const hoverState = {
   rafId:           null,
 };
 
+/* État du scroll : on coupe le spotlight pendant que la page scrolle.
+   Après la fin du scroll, le spot ne revient QUE si la souris bouge
+   (évite de remettre la lumière en pleine face juste parce qu'on s'est
+   arrêté à un endroit avec le curseur). */
+const scrollState = {
+  isScrolling:    false,
+  scrollEndTimer: null,
+};
+
 /* ---------- API publique ---------- */
 export function applySpotlight(spotlightState) {
   if (!spotlightEl) spotlightEl = document.querySelector('.spotlight');
@@ -87,6 +96,32 @@ export function initSpotlight(state) {
   attachNailListeners();
   attachArrowListeners();
   attachPolaroidListeners();
+  attachScrollGuard();
+}
+
+/* Désactive le spot pendant le scroll, le réveille uniquement quand
+   la souris bouge après la fin du scroll (et que le curseur est en zone). */
+function attachScrollGuard() {
+  const SCROLL_END_DELAY = 200;
+
+  window.addEventListener('scroll', () => {
+    scrollState.isScrolling = true;
+    spotlightEl?.classList.remove('is-active');
+    clearTimeout(scrollState.scrollEndTimer);
+    scrollState.scrollEndTimer = setTimeout(() => {
+      scrollState.isScrolling = false;
+      /* Pas d'auto-reactivation : on attend un mousemove explicite. */
+    }, SCROLL_END_DELAY);
+  }, { passive: true });
+
+  /* Mouvement souris après scroll → on rallume si on est en zone. */
+  window.addEventListener('mousemove', () => {
+    if (scrollState.isScrolling) return;
+    if (!hoverState.inScope) return;
+    /* activate() est idempotent (classList.add d'une classe déjà présente
+       est un no-op) donc on peut l'appeler à chaque mousemove sans souci. */
+    activate();
+  }, { passive: true });
 }
 
 /* ---------- Init positions ---------- */
@@ -137,6 +172,9 @@ function reanchorLissajous(now) {
 
 /* ---------- Activation / désactivation ---------- */
 function activate() {
+  /* Si on scrolle, on n'active pas — le scroll est censé éteindre le spot.
+     L'activation effective viendra du mousemove après la fin du scroll. */
+  if (scrollState.isScrolling) return;
   clearTimeout(hoverState.deactivateTimer);
   hoverState.deactivateTimer = null;
   spotlightEl?.classList.add('is-active');

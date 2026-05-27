@@ -368,8 +368,8 @@
     </div>
   </footer>
 
-  <!-- ============== DEBUG PANEL ============== -->
-  <aside id="debug-panel" class="debug" aria-label="Panneau de debug">
+  <!-- ============== DEBUG PANEL (caché sauf si ?debug dans l'URL) ============== -->
+  <aside id="debug-panel" class="debug" aria-label="Panneau de debug" hidden>
     <button id="debug-toggle" class="debug__toggle" aria-expanded="false" title="Tester les couleurs">
       <span>🎨</span>
     </button>
@@ -415,13 +415,13 @@
       </label>
       <div class="debug__row debug__row--slider">
         <label>Rayon</label>
-        <input type="range" id="spot-radius" min="100" max="500" value="220" />
-        <code id="spot-radius-val">220px</code>
+        <input type="range" id="spot-radius" min="100" max="500" value="389" />
+        <code id="spot-radius-val">389px</code>
       </div>
       <div class="debug__row debug__row--slider">
         <label>Ombre</label>
-        <input type="range" id="spot-shadow" min="0" max="85" value="55" />
-        <code id="spot-shadow-val">55%</code>
+        <input type="range" id="spot-shadow" min="0" max="85" value="85" />
+        <code id="spot-shadow-val">85%</code>
       </div>
       <div class="debug__row debug__row--slider">
         <label>Netteté</label>
@@ -430,8 +430,8 @@
       </div>
       <div class="debug__row debug__row--slider">
         <label>Fluidité</label>
-        <input type="range" id="spot-smoothness" min="1" max="15" value="4" />
-        <code id="spot-smoothness-val">4</code>
+        <input type="range" id="spot-smoothness" min="1" max="15" value="7" />
+        <code id="spot-smoothness-val">7</code>
       </div>
 
       <hr />

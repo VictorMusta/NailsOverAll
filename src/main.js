@@ -32,7 +32,13 @@ initInauguration();
    les listeners du spotlight les voient. */
 initCarousels();
 initReviews();              // fire-and-forget : pas de hover handlers à attacher
-initDebugPanel(state);
+
+/* Debug panel : opt-in via ?debug dans l'URL. Le bouton 🎨 n'apparaît
+   donc pas sur la version publique. */
+if (new URLSearchParams(window.location.search).has('debug')) {
+  document.getElementById('debug-panel')?.removeAttribute('hidden');
+  initDebugPanel(state);
+}
 
 /* On attend que les polaroids dynamiques soient rendus avant le spotlight,
    sinon attachPolaroidListeners() les rate. Top-level await OK en module ES. */
