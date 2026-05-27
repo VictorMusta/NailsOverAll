@@ -76,10 +76,32 @@
   display: block;
   width: 100%;
   height: auto;
+  /* mix-blend-mode: le blanc autour de l'ongle se fond dans le bg de l'items.
+     scaleY(-1) : flip vertical pour que le tip pointe vers le bas
+     (style "teeth hanging" comme la maquette d'origine). */
   mix-blend-mode: multiply;
+  transform: scaleY(-1);
 }
 .nail.nail--photo:hover {
   transform: translateY(-12px) scale(1.08) rotate(-1.5deg);
   filter: drop-shadow(6px 10px 0 var(--c-ink));
   z-index: 2;
+}
+
+/* ---------- Nailset bicolore quand il contient des photos ----------
+   Plus de ligne centrale : le contraste vient d'un split de fond
+   horizontal au niveau du milieu des ongles (là où était la ligne). */
+.nailset:has(.nail--photo) .nailset__line {
+  display: none;
+}
+.nailset:has(.nail--photo) .nailset__items {
+  padding: 16px 0;
+  border-radius: 12px;
+  background: linear-gradient(
+    to bottom,
+    var(--c-cream) 0%,
+    var(--c-cream) 50%,
+    color-mix(in srgb, var(--c-pink) 22%, var(--c-cream)) 50%,
+    color-mix(in srgb, var(--c-pink) 22%, var(--c-cream)) 100%
+  );
 }
