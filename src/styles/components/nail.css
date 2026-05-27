@@ -54,3 +54,32 @@
   background-size: 24px 24px;
   background-repeat: repeat;
 }
+
+/* ---------- Variante "photo" : vraie image d'ongle isolé ----------
+   L'image vient avec son fond blanc/cream qu'on neutralise via
+   mix-blend-mode: multiply (le blanc devient transparent contre le
+   fond cream du site, seul le pigment de l'ongle reste). Pas de
+   border ni shape CSS — l'image est sa propre forme. */
+.nail.nail--photo {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+  aspect-ratio: auto;
+  overflow: visible;
+  transition: transform .35s var(--ease), filter .35s var(--ease);
+}
+.nail.nail--photo::after {
+  content: none;   /* pas de reflet pseudo : la photo a déjà ses propres brillances */
+}
+.nail.nail--photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  mix-blend-mode: multiply;
+}
+.nail.nail--photo:hover {
+  transform: translateY(-12px) scale(1.08) rotate(-1.5deg);
+  filter: drop-shadow(6px 10px 0 var(--c-ink));
+  z-index: 2;
+}
