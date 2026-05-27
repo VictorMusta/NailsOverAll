@@ -7,11 +7,14 @@ const STORAGE_KEY = 'noa-state';
 
 export const STATE_DEFAULTS = Object.freeze({
   palette: {
-    '--c-cream': '#f4ede0',
+    /* Palette officielle du salon (DA "noa") — appliquée par défaut.
+       Le preset "default" dans palette.js conserve la palette flashy
+       d'origine, accessible via le bouton Default du debug. */
+    '--c-cream': '#f8eee4',
     '--c-ink':   '#14110f',
-    '--c-pink':  '#ff3d8c',
-    '--c-green': '#1f8a5a',
-    '--c-blue':  '#2856e8',
+    '--c-pink':  '#c0527c',
+    '--c-green': '#1e5128',
+    '--c-blue':  '#818eba',
   },
   spotlight: {
     enabled:    true,
