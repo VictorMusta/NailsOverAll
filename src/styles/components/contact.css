@@ -1,0 +1,69 @@
+/* =========================================================
+   contact.css — section "Réserver" (fond sombre + halos)
+   ========================================================= */
+
+.contact {
+  padding: clamp(80px, 10vw, 140px) clamp(20px, 4vw, 48px);
+  background: var(--c-ink);
+  color: var(--c-cream);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.contact::before {
+  content: "";
+  position: absolute;
+  width: 600px; height: 600px;
+  background: var(--c-pink);
+  border-radius: 50%;
+  bottom: -300px; left: -200px;
+  opacity: 0.15;
+  filter: blur(40px);
+}
+.contact::after {
+  content: "";
+  position: absolute;
+  width: 500px; height: 500px;
+  background: var(--c-blue);
+  border-radius: 50%;
+  top: -200px; right: -150px;
+  opacity: 0.2;
+  filter: blur(60px);
+}
+
+.contact__inner {
+  position: relative;
+  max-width: 720px;
+  margin: 0 auto;
+}
+.contact__title {
+  font-family: var(--ff-display);
+  font-size: clamp(48px, 8vw, 120px);
+  font-weight: 600;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  margin: 0 0 28px;
+}
+.contact__title em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--c-pink);
+}
+.contact__lede {
+  font-size: 19px;
+  opacity: 0.8;
+  margin: 0 0 36px;
+}
+.contact__buttons {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+}
+.contact__address {
+  font-family: var(--ff-display);
+  font-style: italic;
+  font-size: 15px;
+  opacity: 0.6;
+}

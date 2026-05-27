@@ -1,0 +1,23 @@
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Node (au cas où on passe à un build tool plus tard)
+node_modules/
+npm-debug.log*
+yarn-error.log*
+
+# Secrets — important : la clé Google Cloud API ne doit JAMAIS être committée
+.env
+.env.*
+!.env.example
+
+# Local-only
+*.local

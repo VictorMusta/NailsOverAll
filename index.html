@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NOA — Nails Over All · Bergerac</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="src/styles/main.css" />
+</head>
+<body>
+
+  <!-- ============== SPOTLIGHT (rond lumineux + vignette) ============== -->
+  <div class="spotlight" aria-hidden="true"></div>
+
+  <!-- ============== BANNER INAUGURATION (cachée par défaut) ============== -->
+  <!-- Pour activer : passer INAUGURATION.enabled à true dans src/modules/inauguration.js -->
+  <div class="banner" id="inauguration-banner" hidden>
+    <div class="banner__inner">
+      <span class="banner__icon" aria-hidden="true">✨</span>
+      <div class="banner__text">
+        <strong id="banner-title">Inauguration prochaine</strong>
+        <span id="banner-detail">Impasse Doublet · 24100 Bergerac</span>
+      </div>
+      <a class="btn btn--ink" id="banner-cta" href="#contact">M'avertir</a>
+      <button class="banner__dismiss" type="button" aria-label="Fermer">×</button>
+    </div>
+  </div>
+
+  <!-- ============== NAV ============== -->
+  <header class="nav">
+    <a class="nav__logo" href="#hero">
+      <span class="nav__logo-mark">N</span>oa
+    </a>
+    <nav class="nav__links">
+      <a href="#gallery">Galerie</a>
+      <a href="#about">L'atelier</a>
+      <a href="#prices">Tarifs</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="btn btn--ink" href="#contact">Réserver</a>
+  </header>
+
+  <!-- ============== HERO ============== -->
+  <section id="hero" class="hero">
+    <div class="hero__decor hero__decor--blob-1"></div>
+    <div class="hero__decor hero__decor--blob-2"></div>
+    <div class="hero__decor hero__decor--tile-grid"></div>
+
+    <div class="hero__content">
+      <p class="eyebrow">Studio d'art ongulaire · Bergerac</p>
+      <h1 class="hero__title">
+        Nails<br />
+        <em>Over</em><br />
+        All<span class="hero__dot">.</span>
+      </h1>
+      <p class="hero__lede">
+        Des ongles comme des œuvres. Cinq doigts, cinq tableaux miniatures, une signature.
+      </p>
+      <div class="hero__cta">
+        <a class="btn btn--pink" href="#gallery">Voir la galerie</a>
+        <a class="btn btn--ghost" href="#contact">Prendre rendez-vous →</a>
+      </div>
+    </div>
+
+    <div class="hero__preview">
+      <svg viewBox="0 0 320 420" aria-hidden="true">
+        <defs>
+          <linearGradient id="nailGrad1" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0%" stop-color="var(--c-pink)" />
+            <stop offset="100%" stop-color="var(--c-blue)" />
+          </linearGradient>
+        </defs>
+        <rect x="40" y="60" width="240" height="300" rx="120" fill="url(#nailGrad1)" />
+        <circle cx="160" cy="120" r="22" fill="var(--c-cream)" opacity="0.9"/>
+        <path d="M90,260 Q160,300 230,260" stroke="var(--c-cream)" stroke-width="3" fill="none" opacity="0.7"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ============== MARQUEE ============== -->
+  <div class="marquee">
+    <div class="marquee__track">
+      <span>Nail art sur-mesure</span><span class="marquee__dot">✦</span>
+      <span>Gel · Semi-permanent · Acrylique</span><span class="marquee__dot">✦</span>
+      <span>Pièces uniques</span><span class="marquee__dot">✦</span>
+      <span>Studio Bergerac</span><span class="marquee__dot">✦</span>
+      <span>Nail art sur-mesure</span><span class="marquee__dot">✦</span>
+      <span>Gel · Semi-permanent · Acrylique</span><span class="marquee__dot">✦</span>
+      <span>Pièces uniques</span><span class="marquee__dot">✦</span>
+      <span>Studio Bergerac</span><span class="marquee__dot">✦</span>
+    </div>
+  </div>
+
+  <!-- ============== GALERIE / CARROUSELS ============== -->
+  <section id="gallery" class="gallery">
+    <header class="section-header">
+      <p class="eyebrow eyebrow--pink">— 01 / Galerie</p>
+      <h2 class="section-title">
+        Cinq ongles, <em>une</em> histoire.
+      </h2>
+      <p class="section-lede">
+        Chaque set est conçu comme une mini-collection. L'éclairage s'adapte à chaque ambiance.
+      </p>
+    </header>
+
+    <!-- Carrousel 1 -->
+    <article class="carousel" data-set="Floral Garden">
+      <div class="carousel__meta">
+        <h3>Floral Garden</h3>
+        <span class="tag">Gel · 5 ongles · 90€</span>
+      </div>
+      <div class="carousel__stage">
+        <button class="carousel__arrow carousel__arrow--prev" aria-label="Précédent">←</button>
+        <div class="carousel__viewport">
+          <div class="nailset" data-light-warm="#ff3d8c" data-light-cool="#2856e8">
+            <div class="nailset__line"></div>
+            <div class="nailset__items">
+              <div class="nail" style="--nail-color: var(--c-pink);"></div>
+              <div class="nail" style="--nail-color: var(--c-green);"></div>
+              <div class="nail" style="--nail-color: var(--c-blue);"></div>
+              <div class="nail" style="--nail-color: var(--c-pink);"></div>
+              <div class="nail" style="--nail-color: var(--c-green);"></div>
+            </div>
+            <p class="nailset__caption">Set #1 · Bouquet pastel</p>
+          </div>
+          <div class="nailset" data-light-warm="#1f8a5a" data-light-cool="#ff3d8c">
+            <div class="nailset__line"></div>
+            <div class="nailset__items">
+              <div class="nail" style="--nail-color: var(--c-blue);"></div>
+              <div class="nail" style="--nail-color: var(--c-pink);"></div>
+              <div class="nail" style="--nail-color: var(--c-green);"></div>
+              <div class="nail" style="--nail-color: var(--c-blue);"></div>
+              <div class="nail" style="--nail-color: var(--c-pink);"></div>
+            </div>
+            <p class="nailset__caption">Set #2 · Jardin sauvage</p>
+          </div>
+          <div class="nailset" data-light-warm="#2856e8" data-light-cool="#1f8a5a">
+            <div class="nailset__line"></div>
+            <div class="nailset__items">
+              <div class="nail" style="--nail-color: var(--c-green);"></div>
+              <div class="nail" style="--nail-color: var(--c-pink);"></div>
+              <div class="nail" style="--nail-color: var(--c-pink);"></div>
+              <div class="nail" style="--nail-color: var(--c-blue);"></div>
+              <div class="nail" style="--nail-color: var(--c-green);"></div>
+            </div>
+            <p class="nailset__caption">Set #3 · Aube humide</p>
+          </div>
+        </div>
+        <button class="carousel__arrow carousel__arrow--next" aria-label="Suivant">→</button>
+      </div>
+      <div class="carousel__dots" aria-hidden="true"></div>
+    </article>
+
+    <!-- Carrousel 2 - layout décalé -->
+    <article class="carousel carousel--offset" data-set="Electric Jelly">
+      <div class="carousel__meta">
+        <h3>Electric Jelly</h3>
+        <span class="tag">Semi-perm · 5 ongles · 75€</span>
+      </div>
+      <div class="carousel__stage">
+        <button class="carousel__arrow carousel__arrow--prev" aria-label="Précédent">←</button>
+        <div class="carousel__viewport">
+          <div class="nailset" data-light-warm="#1f8a5a" data-light-cool="#2856e8">
+            <div class="nailset__line"></div>
+            <div class="nailset__items">
+              <div class="nail nail--shape-stiletto" style="--nail-color: var(--c-green);"></div>
+              <div class="nail nail--shape-stiletto" style="--nail-color: var(--c-pink);"></div>
+              <div class="nail nail--shape-stiletto" style="--nail-color: var(--c-blue);"></div>
+              <div class="nail nail--shape-stiletto" style="--nail-color: var(--c-green);"></div>
+              <div class="nail nail--shape-stiletto" style="--nail-color: var(--c-pink);"></div>
+            </div>
+            <p class="nailset__caption">Set #1 · Néon doux</p>
+          </div>
+          <div class="nailset" data-light-warm="#ff3d8c" data-light-cool="#1f8a5a">
+            <div class="nailset__line"></div>
+            <div class="nailset__items">
+              <div class="nail nail--shape-stiletto" style="--nail-color: var(--c-blue);"></div>
+              <div class="nail nail--shape-stiletto" style="--nail-color: var(--c-green);"></div>
+              <div class="nail nail--shape-stiletto" style="--nail-color: var(--c-pink);"></div>
+              <div class="nail nail--shape-stiletto" style="--nail-color: var(--c-blue);"></div>
+              <div class="nail nail--shape-stiletto" style="--nail-color: var(--c-green);"></div>
+            </div>
+            <p class="nailset__caption">Set #2 · Pop intense</p>
+          </div>
+        </div>
+        <button class="carousel__arrow carousel__arrow--next" aria-label="Suivant">→</button>
+      </div>
+      <div class="carousel__dots" aria-hidden="true"></div>
+    </article>
+
+    <!-- Carrousel 3 -->
+    <article class="carousel" data-set="Damier Pop">
+      <div class="carousel__meta">
+        <h3>Damier Pop</h3>
+        <span class="tag">Acrylique · 5 ongles · 110€</span>
+      </div>
+      <div class="carousel__stage">
+        <button class="carousel__arrow carousel__arrow--prev" aria-label="Précédent">←</button>
+        <div class="carousel__viewport">
+          <div class="nailset" data-light-warm="#ff3d8c" data-light-cool="#14110f">
+            <div class="nailset__line"></div>
+            <div class="nailset__items">
+              <div class="nail nail--checker" style="--nail-color: var(--c-pink); --nail-color-2: var(--c-cream);"></div>
+              <div class="nail nail--checker" style="--nail-color: var(--c-green); --nail-color-2: var(--c-cream);"></div>
+              <div class="nail nail--checker" style="--nail-color: var(--c-blue); --nail-color-2: var(--c-cream);"></div>
+              <div class="nail nail--checker" style="--nail-color: var(--c-ink); --nail-color-2: var(--c-cream);"></div>
+              <div class="nail nail--checker" style="--nail-color: var(--c-pink); --nail-color-2: var(--c-cream);"></div>
+            </div>
+            <p class="nailset__caption">Set #1 · Damier signature</p>
+          </div>
+          <div class="nailset" data-light-warm="#2856e8" data-light-cool="#ff3d8c">
+            <div class="nailset__line"></div>
+            <div class="nailset__items">
+              <div class="nail nail--checker" style="--nail-color: var(--c-blue); --nail-color-2: var(--c-pink);"></div>
+              <div class="nail nail--checker" style="--nail-color: var(--c-pink); --nail-color-2: var(--c-blue);"></div>
+              <div class="nail nail--checker" style="--nail-color: var(--c-green); --nail-color-2: var(--c-cream);"></div>
+              <div class="nail nail--checker" style="--nail-color: var(--c-pink); --nail-color-2: var(--c-blue);"></div>
+              <div class="nail nail--checker" style="--nail-color: var(--c-blue); --nail-color-2: var(--c-pink);"></div>
+            </div>
+            <p class="nailset__caption">Set #2 · Damier bleu/rose</p>
+          </div>
+        </div>
+        <button class="carousel__arrow carousel__arrow--next" aria-label="Suivant">→</button>
+      </div>
+      <div class="carousel__dots" aria-hidden="true"></div>
+    </article>
+  </section>
+
+  <!-- ============== RÉALISATIONS (vraies photos en polaroid) ============== -->
+  <section id="works" class="works">
+    <header class="section-header">
+      <p class="eyebrow eyebrow--blue">— 02 / Réalisations</p>
+      <h2 class="section-title">
+        Ses dernières <em>œuvres</em>.
+      </h2>
+      <p class="section-lede">
+        Le travail brut, sans filtre. Chaque pose est unique.
+      </p>
+    </header>
+
+    <div class="works__grid">
+      <figure class="polaroid polaroid--1">
+        <div class="polaroid__frame">
+          <img src="images/realisation-01.jpg" alt="Nail art chocolat marbré avec fleur 3D nude et strass dorés" loading="lazy" onerror="this.style.display='none'" />
+          <div class="polaroid__fallback" aria-hidden="true">
+            <span>realisation-01.jpg</span>
+            <small>à déposer dans /images</small>
+          </div>
+        </div>
+        <figcaption class="polaroid__caption">
+          <span class="polaroid__num">#01</span>
+          Chocolat marbré · fleur 3D nude · strass dorés
+        </figcaption>
+      </figure>
+
+      <figure class="polaroid polaroid--2">
+        <div class="polaroid__frame">
+          <img src="images/realisation-02.jpg" alt="Nail art botanique rose poudré avec fleur verte 3D et perles dorées" loading="lazy" onerror="this.style.display='none'" />
+          <div class="polaroid__fallback" aria-hidden="true">
+            <span>realisation-02.jpg</span>
+            <small>à déposer dans /images</small>
+          </div>
+        </div>
+        <figcaption class="polaroid__caption">
+          <span class="polaroid__num">#02</span>
+          Botanique rose · feuille sauge · perles &amp; strass ambrés
+        </figcaption>
+      </figure>
+    </div>
+
+    <p class="works__hint">↓ Plus de réalisations sur <a href="https://www.instagram.com/nailsoverall/" target="_blank" rel="noopener">@nailsoverall</a></p>
+  </section>
+
+  <!-- ============== ABOUT / L'ATELIER ============== -->
+  <section id="about" class="about">
+    <div class="about__grid">
+      <div class="about__visual">
+        <div class="about__photo"></div>
+        <div class="about__sticker about__sticker--1">★ Pièce unique</div>
+        <div class="about__sticker about__sticker--2">Bergerac · Dordogne</div>
+      </div>
+      <div class="about__text">
+        <p class="eyebrow eyebrow--green">— 03 / L'atelier</p>
+        <h2 class="section-title section-title--alt">
+          Noa, <em>l'œil</em> et la main.
+        </h2>
+        <p>
+          Formée aux Beaux-Arts avant de poser ses pinceaux sur des ongles, Noa traite chaque main comme un petit musée. La règle de la maison : aucun set jamais reproduit à l'identique.
+        </p>
+        <p>
+          Le studio est un atelier d'artiste plus qu'un salon. Café, vinyle, lumière du jour, et une heure pour vous, rien que pour vous.
+        </p>
+        <div class="about__stats">
+          <div><strong>+200</strong><span>sets créés</span></div>
+          <div><strong>5/5</strong><span>sur Google</span></div>
+          <div><strong>1h30</strong><span>par rendez-vous</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== AVIS (Google ≥4.5★) ============== -->
+  <section id="reviews" class="reviews">
+    <header class="section-header">
+      <p class="eyebrow eyebrow--pink">— 04 / Avis</p>
+      <h2 class="section-title">
+        Elles en parlent <em>mieux</em> que nous.
+      </h2>
+      <p class="section-lede">
+        Avis Google vérifiés · filtrés à 4.5★ et plus
+      </p>
+    </header>
+
+    <div class="reviews__summary" id="reviews-summary">
+      <!-- Rempli par JS depuis reviews.json -->
+    </div>
+
+    <div class="reviews__grid" id="reviews-list">
+      <!-- Cards générées par JS -->
+      <p class="reviews__loading">Chargement des avis…</p>
+    </div>
+  </section>
+
+  <!-- ============== TARIFS ============== -->
+  <section id="prices" class="prices">
+    <div class="prices__pattern" aria-hidden="true"></div>
+    <header class="section-header">
+      <p class="eyebrow eyebrow--green">— 05 / Tarifs</p>
+      <h2 class="section-title">
+        Transparence <em>totale</em>.
+      </h2>
+    </header>
+
+    <div class="prices__grid">
+      <article class="price-card">
+        <div class="price-card__shape price-card__shape--pink"></div>
+        <h3>Pose semi-permanent</h3>
+        <p class="price-card__price">45€<span>/ set</span></p>
+        <ul>
+          <li>Préparation cuticules</li>
+          <li>Couleur unie ou french</li>
+          <li>1h en moyenne</li>
+        </ul>
+      </article>
+      <article class="price-card price-card--featured">
+        <div class="price-card__shape price-card__shape--green"></div>
+        <span class="price-card__badge">Best</span>
+        <h3>Nail art signature</h3>
+        <p class="price-card__price">90€<span>/ set</span></p>
+        <ul>
+          <li>Création sur-mesure</li>
+          <li>Jusqu'à 5 motifs différents</li>
+          <li>1h30 dédiée</li>
+        </ul>
+      </article>
+      <article class="price-card">
+        <div class="price-card__shape price-card__shape--blue"></div>
+        <h3>Acrylique sculpté</h3>
+        <p class="price-card__price">110€<span>/ set</span></p>
+        <ul>
+          <li>Extension & forme</li>
+          <li>Art 3D possible</li>
+          <li>2h de pose</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============== CONTACT ============== -->
+  <section id="contact" class="contact">
+    <div class="contact__inner">
+      <p class="eyebrow eyebrow--cream">— 06 / Réserver</p>
+      <h2 class="contact__title">
+        Posez vos mains <em>ici</em>.
+      </h2>
+      <p class="contact__lede">
+        Réservation par DM Instagram ou directement par téléphone. Une réponse sous 24h.
+      </p>
+      <div class="contact__buttons">
+        <a class="btn btn--cream" href="https://www.instagram.com/nailsoverall/" target="_blank" rel="noopener">Instagram @nailsoverall</a>
+        <a class="btn btn--ghost btn--ghost-on-dark" href="tel:+33600000000">+33 6 00 00 00 00</a>
+      </div>
+      <p class="contact__address">Impasse Doublet · 24100 Bergerac · Mar–Sam</p>
+    </div>
+  </section>
+
+  <!-- ============== FOOTER ============== -->
+  <footer class="footer">
+    <div class="footer__big">NOA</div>
+    <div class="footer__meta">
+      <span>© 2026 Nails Over All</span>
+      <span>Crafted with love &amp; nail polish</span>
+    </div>
+  </footer>
+
+  <!-- ============== DEBUG PANEL ============== -->
+  <aside id="debug-panel" class="debug" aria-label="Panneau de debug">
+    <button id="debug-toggle" class="debug__toggle" aria-expanded="false" title="Tester les couleurs">
+      <span>🎨</span>
+    </button>
+    <div class="debug__body" hidden>
+      <header class="debug__header">
+        <strong>Color Lab</strong>
+        <button id="debug-reset" class="debug__reset" title="Réinitialiser">↺</button>
+      </header>
+
+      <div class="debug__section-title">Palette</div>
+      <div class="debug__row" data-var="--c-cream">
+        <label>Crème (fond)</label>
+        <input type="color" />
+        <code></code>
+      </div>
+      <div class="debug__row" data-var="--c-ink">
+        <label>Encre (texte)</label>
+        <input type="color" />
+        <code></code>
+      </div>
+      <div class="debug__row" data-var="--c-pink">
+        <label>Rose</label>
+        <input type="color" />
+        <code></code>
+      </div>
+      <div class="debug__row" data-var="--c-green">
+        <label>Vert</label>
+        <input type="color" />
+        <code></code>
+      </div>
+      <div class="debug__row" data-var="--c-blue">
+        <label>Bleu</label>
+        <input type="color" />
+        <code></code>
+      </div>
+
+      <hr />
+
+      <div class="debug__section-title">Spot lumineux</div>
+      <label class="debug__check">
+        <input type="checkbox" id="spot-toggle" checked />
+        <span>Activé</span>
+      </label>
+      <div class="debug__row debug__row--slider">
+        <label>Rayon</label>
+        <input type="range" id="spot-radius" min="100" max="500" value="220" />
+        <code id="spot-radius-val">220px</code>
+      </div>
+      <div class="debug__row debug__row--slider">
+        <label>Ombre</label>
+        <input type="range" id="spot-shadow" min="0" max="85" value="55" />
+        <code id="spot-shadow-val">55%</code>
+      </div>
+      <div class="debug__row debug__row--slider">
+        <label>Netteté</label>
+        <input type="range" id="spot-sharpness" min="0" max="100" value="60" />
+        <code id="spot-sharpness-val">60%</code>
+      </div>
+      <div class="debug__row debug__row--slider">
+        <label>Fluidité</label>
+        <input type="range" id="spot-smoothness" min="1" max="15" value="4" />
+        <code id="spot-smoothness-val">4</code>
+      </div>
+
+      <hr />
+
+      <div class="debug__section-title">Presets</div>
+      <div class="debug__presets">
+        <button data-preset="default">Default</button>
+        <button data-preset="noa">Noa</button>
+        <button data-preset="acid">Acid</button>
+        <button data-preset="berry">Berry</button>
+        <button data-preset="mint">Mint</button>
+      </div>
+      <p class="debug__hint">Modifs sauvegardées localement.</p>
+    </div>
+  </aside>
+
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>

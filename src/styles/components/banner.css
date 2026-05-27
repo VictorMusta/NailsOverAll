@@ -1,0 +1,80 @@
+/* =========================================================
+   banner.css — bannière "inauguration" en haut de page
+   Cachée par défaut (hidden attr) ; révélée par JS quand
+   INAUGURATION.enabled = true.
+   ========================================================= */
+
+.banner {
+  position: relative;
+  z-index: 70;
+  background: linear-gradient(90deg, var(--c-pink) 0%, var(--c-blue) 100%);
+  color: var(--c-cream);
+  border-bottom: 2.5px solid var(--c-ink);
+  padding: 14px clamp(20px, 4vw, 48px);
+  overflow: hidden;
+}
+.banner::before {
+  /* Motif confettis discret pour l'effet "événement" */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(var(--c-cream) 1.5px, transparent 1.5px),
+    radial-gradient(var(--c-cream) 1.5px, transparent 1.5px);
+  background-size: 32px 32px;
+  background-position: 0 0, 16px 16px;
+  opacity: 0.12;
+  pointer-events: none;
+}
+
+.banner__inner {
+  position: relative;
+  max-width: var(--container);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.banner__icon {
+  font-size: 26px;
+  filter: drop-shadow(0 2px 0 var(--c-ink));
+  animation: sparkle 2.4s ease-in-out infinite;
+}
+@keyframes sparkle {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  50%      { transform: rotate(20deg) scale(1.15); }
+}
+.banner__text {
+  flex: 1;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.banner__text strong {
+  font-family: var(--ff-display);
+  font-style: italic;
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+.banner__text span {
+  font-size: 13px;
+  opacity: 0.92;
+}
+.banner__dismiss {
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  background: rgba(20, 17, 15, 0.25);
+  color: var(--c-cream);
+  font-size: 22px;
+  line-height: 1;
+  display: grid;
+  place-items: center;
+  transition: background .2s, transform .2s;
+}
+.banner__dismiss:hover {
+  background: var(--c-ink);
+  transform: rotate(90deg);
+}

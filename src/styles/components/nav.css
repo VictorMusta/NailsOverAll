@@ -1,0 +1,58 @@
+/* =========================================================
+   nav.css — barre de navigation sticky
+   ========================================================= */
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px clamp(20px, 4vw, 48px);
+  background: color-mix(in srgb, var(--c-cream) 88%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid color-mix(in srgb, var(--c-ink) 8%, transparent);
+}
+.nav__logo {
+  font-family: var(--ff-display);
+  font-style: italic;
+  font-weight: 600;
+  font-size: 26px;
+  letter-spacing: -0.02em;
+  display: inline-flex;
+  align-items: baseline;
+}
+.nav__logo-mark {
+  display: inline-grid;
+  place-items: center;
+  width: 36px; height: 36px;
+  background: var(--c-pink);
+  color: var(--c-cream);
+  border-radius: 50%;
+  font-style: normal;
+  font-size: 18px;
+  margin-right: 6px;
+  transform: translateY(4px);
+}
+.nav__links {
+  display: flex;
+  gap: 28px;
+  font-size: 14px;
+  font-weight: 500;
+}
+.nav__links a { position: relative; padding: 4px 0; }
+.nav__links a::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: 0;
+  width: 0; height: 2px;
+  background: var(--c-pink);
+  transition: width .3s var(--ease);
+}
+.nav__links a:hover::after { width: 100%; }
+
+@media (max-width: 720px) {
+  .nav__links { display: none; }
+}

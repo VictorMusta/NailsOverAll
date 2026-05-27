@@ -1,0 +1,28 @@
+/* =========================================================
+   marquee.css — bandeau défilant
+   ========================================================= */
+
+.marquee {
+  background: var(--c-ink);
+  color: var(--c-cream);
+  padding: 18px 0;
+  overflow: hidden;
+  border-block: 1px solid var(--c-ink);
+}
+.marquee__track {
+  display: flex;
+  gap: 32px;
+  white-space: nowrap;
+  font-family: var(--ff-display);
+  font-style: italic;
+  font-size: 22px;
+  font-weight: 500;
+  animation: marquee 28s linear infinite;
+  width: max-content;
+}
+.marquee__dot { color: var(--c-pink); }
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}

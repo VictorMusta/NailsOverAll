@@ -1,0 +1,30 @@
+/* =========================================================
+   footer.css — pied de page (NOA outline géant)
+   ========================================================= */
+
+.footer {
+  background: var(--c-cream);
+  padding: 60px clamp(20px, 4vw, 48px) 30px;
+  text-align: center;
+  border-top: 2px solid var(--c-ink);
+}
+.footer__big {
+  font-family: var(--ff-display);
+  font-weight: 800;
+  font-size: clamp(120px, 24vw, 360px);
+  line-height: 0.85;
+  letter-spacing: -0.06em;
+  margin-bottom: 30px;
+  -webkit-text-stroke: 2px var(--c-ink);
+  color: transparent;
+}
+.footer__meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: var(--c-ink-soft);
+  padding-top: 24px;
+  border-top: 1px solid color-mix(in srgb, var(--c-ink) 15%, transparent);
+  flex-wrap: wrap;
+  gap: 8px;
+}

@@ -1,0 +1,50 @@
+{
+  "fetchedAt": "2026-05-24T00:00:00.000Z",
+  "source": "placeholder",
+  "placeName": "NOA — Nails Over All",
+  "averageRating": 4.9,
+  "totalReviews": 32,
+  "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJB3FyVPvRqhIRMxwnwaht5sY",
+  "reviews": [
+    {
+      "rating": 5,
+      "text": "Travail incroyable, Noa a une vraie patte d'artiste. Mes ongles n'ont jamais été aussi beaux, je repartais avec l'impression d'avoir des bijoux au bout des doigts.",
+      "author": "Marine D.",
+      "avatar": null,
+      "date": "Il y a 2 mois",
+      "publishTime": "2026-03-24T10:00:00Z"
+    },
+    {
+      "rating": 5,
+      "text": "Salon hyper agréable, ambiance posée. Noa prend le temps de comprendre ce que tu veux et propose toujours quelque chose d'original. Adopté !",
+      "author": "Léa P.",
+      "avatar": null,
+      "date": "Il y a 3 mois",
+      "publishTime": "2026-02-15T14:30:00Z"
+    },
+    {
+      "rating": 5,
+      "text": "Je n'ai jamais reçu autant de compliments sur mes ongles. Du nail art comme une œuvre, vraiment. Je reviens dans 3 semaines pour une nouvelle session.",
+      "author": "Camille R.",
+      "avatar": null,
+      "date": "Il y a 1 mois",
+      "publishTime": "2026-04-20T09:15:00Z"
+    },
+    {
+      "rating": 5,
+      "text": "Bergerac avait besoin d'un salon comme celui-ci. Niveau parisien, prix doux, accueil au top. Ne changez rien.",
+      "author": "Sophie M.",
+      "avatar": null,
+      "date": "Il y a 2 semaines",
+      "publishTime": "2026-05-10T16:45:00Z"
+    },
+    {
+      "rating": 5,
+      "text": "Première fois que je teste l'acrylique sculpté et je suis sous le charme. Noa a un vrai œil, elle a deviné exactement ce qui m'irait.",
+      "author": "Julie B.",
+      "avatar": null,
+      "date": "Il y a 5 jours",
+      "publishTime": "2026-05-19T11:00:00Z"
+    }
+  ]
+}

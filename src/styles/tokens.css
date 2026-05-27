@@ -1,0 +1,40 @@
+/* =========================================================
+   tokens.css — variables CSS (design tokens)
+   Palette + tokens spotlight + typo + espacements + easing.
+   ========================================================= */
+
+:root {
+  /* Palette principale (swappable via le debug panel) */
+  --c-cream: #f4ede0;
+  --c-ink:   #14110f;
+  --c-pink:  #ff3d8c;
+  --c-green: #1f8a5a;
+  --c-blue:  #2856e8;
+
+  /* Dérivés */
+  --c-ink-soft:   color-mix(in srgb, var(--c-ink) 70%, var(--c-cream));
+  --c-cream-deep: color-mix(in srgb, var(--c-cream) 80%, var(--c-ink));
+
+  /* Spotlight — 2 spots indépendants pilotés par JS */
+  --spot1-x: 50%;
+  --spot1-y: 50%;
+  --spot1-radius: 220px;
+  --spot2-x: 60%;
+  --spot2-y: 40%;
+  --spot2-radius: 130px;
+  --spot-shadow:    0.55;
+  --spot-sharpness: 0.6;   /* 0 = très doux, 1 = très net */
+
+  /* Typo */
+  --ff-display: "Fraunces", "Times New Roman", serif;
+  --ff-body:    "Inter", system-ui, sans-serif;
+
+  /* Espacements & rayons */
+  --container:   min(1280px, 92vw);
+  --radius-pill: 999px;
+  --radius-lg:   28px;
+  --radius-md:   18px;
+
+  /* Easing partagé */
+  --ease: cubic-bezier(.2, .8, .2, 1);
+}

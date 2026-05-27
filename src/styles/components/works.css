@@ -1,0 +1,144 @@
+/* =========================================================
+   works.css — section "Réalisations" (polaroïds tiltés)
+   ========================================================= */
+
+.works {
+  padding: clamp(60px, 8vw, 100px) clamp(20px, 4vw, 48px) clamp(80px, 10vw, 140px);
+  position: relative;
+  overflow: hidden;
+}
+.works::before {
+  /* Pattern hachuré discret en fond, type mur de galerie */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent 0,
+    transparent 24px,
+    color-mix(in srgb, var(--c-ink) 6%, transparent) 24px,
+    color-mix(in srgb, var(--c-ink) 6%, transparent) 25px
+  );
+  pointer-events: none;
+}
+
+.works__grid {
+  position: relative;
+  max-width: var(--container);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(24px, 4vw, 60px);
+  align-items: center;
+}
+@media (max-width: 820px) {
+  .works__grid { grid-template-columns: 1fr; gap: 50px; }
+}
+
+/* ---------- Polaroïd ---------- */
+.polaroid {
+  position: relative;
+  margin: 0;
+  background: var(--c-cream);
+  border: 2.5px solid var(--c-ink);
+  padding: 16px 16px 0;
+  box-shadow: 10px 10px 0 var(--c-ink);
+  cursor: pointer;
+  transition: transform .5s var(--ease), box-shadow .5s var(--ease);
+}
+.polaroid--1 {
+  transform: rotate(-3deg);
+  justify-self: end;
+  max-width: 460px;
+  box-shadow: 10px 10px 0 var(--c-pink);
+}
+.polaroid--2 {
+  transform: rotate(2.5deg) translateY(40px);
+  justify-self: start;
+  max-width: 460px;
+  box-shadow: 10px 10px 0 var(--c-blue);
+}
+.polaroid:hover {
+  transform: rotate(0) translateY(0) scale(1.02);
+  box-shadow: 16px 18px 0 var(--c-ink);
+}
+
+.polaroid__frame {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  background: linear-gradient(135deg,
+    color-mix(in srgb, var(--c-ink) 12%, var(--c-cream)),
+    color-mix(in srgb, var(--c-ink) 6%,  var(--c-cream)));
+  overflow: hidden;
+  border: 1.5px solid var(--c-ink);
+}
+.polaroid__frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: relative;
+  z-index: 2;
+}
+.polaroid__frame img:not([src]),
+.polaroid__frame img[src=""] {
+  display: none;
+}
+.polaroid__fallback {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: grid;
+  place-content: center;
+  text-align: center;
+  font-family: ui-monospace, monospace;
+  font-size: 13px;
+  color: var(--c-ink-soft);
+  gap: 4px;
+  padding: 20px;
+}
+.polaroid__fallback small {
+  font-size: 11px;
+  opacity: 0.7;
+  font-style: italic;
+  font-family: var(--ff-display);
+}
+
+.polaroid__caption {
+  padding: 16px 4px 18px;
+  font-family: var(--ff-display);
+  font-style: italic;
+  font-size: 15px;
+  line-height: 1.4;
+  color: var(--c-ink);
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+.polaroid__num {
+  font-family: var(--ff-body);
+  font-style: normal;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  background: var(--c-ink);
+  color: var(--c-cream);
+  padding: 3px 8px;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.works__hint {
+  position: relative;
+  text-align: center;
+  margin: 60px auto 0;
+  font-family: var(--ff-display);
+  font-style: italic;
+  font-size: 16px;
+  color: var(--c-ink-soft);
+}
+.works__hint a {
+  color: var(--c-pink);
+  font-weight: 600;
+  border-bottom: 1.5px solid var(--c-pink);
+  padding-bottom: 1px;
+}

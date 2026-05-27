@@ -1,0 +1,40 @@
+/* =========================================================
+   main.css — point d'entrée unique du style
+   Ordre d'import = ordre de cascade. Mobile à la fin pour
+   pouvoir surcharger les composants.
+
+   Note perf : les @import sont chaînés. Pour un site vitrine
+   c'est acceptable. Si la perf devient critique, on passera
+   à un build tool qui concatène tout en un seul fichier.
+   ========================================================= */
+
+/* ---------- Police externe (Google Fonts) ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,400;1,9..144,600&family=Inter:wght@400;500;600;700&display=swap');
+
+/* ---------- Fondations ---------- */
+@import url('./tokens.css');
+@import url('./base.css');
+
+/* ---------- Primitives transversales ---------- */
+@import url('./components/shared.css');
+
+/* ---------- Sections / composants ---------- */
+@import url('./components/nav.css');
+@import url('./components/banner.css');
+@import url('./components/hero.css');
+@import url('./components/marquee.css');
+@import url('./components/carousel.css');
+@import url('./components/nail.css');
+@import url('./components/works.css');
+@import url('./components/about.css');
+@import url('./components/prices.css');
+@import url('./components/reviews.css');
+@import url('./components/contact.css');
+@import url('./components/footer.css');
+
+/* ---------- Overlays ---------- */
+@import url('./components/spotlight.css');
+@import url('./components/debug.css');
+
+/* ---------- Responsive (dernier pour surcharger) ---------- */
+@import url('./responsive/mobile.css');

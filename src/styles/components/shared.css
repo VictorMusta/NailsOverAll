@@ -1,0 +1,89 @@
+/* =========================================================
+   shared.css — primitives transversales
+   Buttons, eyebrows, section headers, tag.
+   ========================================================= */
+
+/* ---------- Eyebrow (petit label en haut de section) ---------- */
+.eyebrow {
+  font-family: var(--ff-body);
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--c-ink-soft);
+  margin: 0 0 18px;
+}
+.eyebrow--pink  { color: var(--c-pink); }
+.eyebrow--green { color: var(--c-green); }
+.eyebrow--blue  { color: var(--c-blue); }
+.eyebrow--cream { color: var(--c-cream); }
+
+/* ---------- Titre de section ---------- */
+.section-title {
+  font-family: var(--ff-display);
+  font-weight: 600;
+  font-size: clamp(40px, 6vw, 88px);
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  margin: 0 0 24px;
+}
+.section-title em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--c-pink);
+}
+.section-title--alt em { color: var(--c-green); }
+.section-lede {
+  font-size: 18px;
+  max-width: 56ch;
+  color: var(--c-ink-soft);
+  margin: 0 auto;
+}
+.section-header {
+  text-align: center;
+  max-width: var(--container);
+  margin: 0 auto 64px;
+  padding: 0 20px;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 26px;
+  border-radius: var(--radius-pill);
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.01em;
+  transition:
+    transform .25s var(--ease),
+    background .25s var(--ease),
+    color .25s var(--ease);
+}
+.btn:hover { transform: translateY(-2px); }
+.btn--ink   { background: var(--c-ink);   color: var(--c-cream); }
+.btn--pink  { background: var(--c-pink);  color: var(--c-cream); }
+.btn--cream { background: var(--c-cream); color: var(--c-ink); }
+.btn--ghost {
+  background: transparent;
+  color: var(--c-ink);
+  border: 1.5px solid var(--c-ink);
+}
+.btn--ghost-on-dark {
+  color: var(--c-cream);
+  border-color: var(--c-cream);
+}
+
+/* ---------- Tag (chip noir) ---------- */
+.tag {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  background: var(--c-ink);
+  color: var(--c-cream);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}

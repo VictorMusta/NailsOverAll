@@ -1,0 +1,129 @@
+/* =========================================================
+   mobile.css — refonte du carrousel pour smartphone +
+                désactivation du spotlight sur tactile
+   Doit être chargé en dernier pour pouvoir surcharger les
+   styles des composants.
+   ========================================================= */
+
+@media (max-width: 720px) {
+  /* On aplatit la structure : plus de scroll horizontal entre sets,
+     les nailsets s'empilent verticalement. */
+  .carousel {
+    margin: 0 0 70px;
+    padding: 0;
+  }
+  .carousel--offset { margin: 0 0 70px; }
+  .carousel__meta { padding: 0 5vw; margin-bottom: 16px; }
+
+  .carousel__stage { display: block; position: static; }
+
+  .carousel__arrow,
+  .carousel__dots {
+    display: none;
+  }
+
+  .carousel__viewport {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    overflow: visible;
+    scroll-snap-type: none;
+    padding-block: 0;
+    padding-inline: 0;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  /* Tous les sets équivalents — plus de blur/peek desktop */
+  .nailset,
+  .nailset--clone {
+    flex: 0 0 auto !important;
+    width: 100%;
+    padding: 10px 0 30px;
+    filter: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  /* Les clones desktop ne devraient pas exister sur mobile, mais on cache au cas où */
+  .nailset--clone { display: none; }
+
+  .nailset__line { display: none; }
+
+  /* Les 5 ongles : scroll-snap horizontal, l'ongle centré scale ×1.08 */
+  .nailset__items {
+    --m-nail-w: 70vw;
+    display: flex;
+    grid-template-columns: none;
+    gap: 14px;
+    padding-inline: calc((100% - var(--m-nail-w)) / 2);
+    padding-block: 5vh;
+    overflow-x: auto;
+    overflow-y: visible;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: calc((100% - var(--m-nail-w)) / 2);
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    align-items: center;
+  }
+  .nailset__items::-webkit-scrollbar { display: none; }
+
+  .nail {
+    flex: 0 0 var(--m-nail-w, 70vw);
+    aspect-ratio: unset;
+    width: 70vw;
+    height: 72vh;
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+    transform: scale(0.72);
+    transition: transform 0.55s var(--ease), box-shadow 0.55s var(--ease);
+    will-change: transform;
+    border-top-left-radius: 36px;
+    border-top-right-radius: 36px;
+    border-bottom-left-radius: 50% 35%;
+    border-bottom-right-radius: 50% 35%;
+    border-width: 3px;
+    box-shadow: 6px 6px 0 var(--c-ink);
+  }
+  .nail:hover {
+    /* Désactive l'effet hover desktop (le scroll-driven gère tout) */
+    transform: scale(0.72);
+    box-shadow: 6px 6px 0 var(--c-ink);
+    z-index: 0;
+  }
+  .nail.is-active {
+    transform: scale(1.08);
+    box-shadow: 10px 14px 0 var(--c-ink);
+    z-index: 2;
+  }
+  .nail.is-active:hover {
+    transform: scale(1.08);
+    box-shadow: 10px 14px 0 var(--c-ink);
+  }
+
+  .nail.nail--shape-stiletto {
+    border-bottom-left-radius: 50% 60%;
+    border-bottom-right-radius: 50% 60%;
+  }
+  .nail.nail--checker {
+    background-size: 40px 40px;
+  }
+  .nail::after {
+    /* Reflet plus grand pour matcher la taille mobile */
+    background: radial-gradient(
+      ellipse at 30% 22%,
+      color-mix(in srgb, white 26%, transparent) 0%,
+      transparent 50%
+    );
+  }
+
+  .nailset__caption {
+    padding: 0 5vw;
+    font-size: 15px;
+    margin-top: 16px;
+  }
+}
+
+/* Pas de spotlight sur écran tactile ou petit format (pas de hover) */
+@media (pointer: coarse), (max-width: 720px) {
+  .spotlight { display: none; }
+}

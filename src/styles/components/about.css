@@ -1,0 +1,86 @@
+/* =========================================================
+   about.css — section "L'atelier" (vert)
+   ========================================================= */
+
+.about {
+  padding: clamp(80px, 10vw, 140px) clamp(20px, 4vw, 48px);
+  background: var(--c-green);
+  color: var(--c-cream);
+  position: relative;
+  overflow: hidden;
+}
+.about__grid {
+  max-width: var(--container);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 80px;
+  align-items: center;
+}
+@media (max-width: 900px) {
+  .about__grid { grid-template-columns: 1fr; gap: 60px; }
+}
+
+.about__visual {
+  position: relative;
+  aspect-ratio: 1;
+}
+.about__photo {
+  width: 100%; height: 100%;
+  border-radius: 50% 50% 50% 12px;
+  background:
+    radial-gradient(circle at 30% 30%, var(--c-pink), transparent 60%),
+    radial-gradient(circle at 70% 70%, var(--c-blue), transparent 60%),
+    var(--c-cream);
+  border: 3px solid var(--c-ink);
+  box-shadow: 12px 12px 0 var(--c-ink);
+}
+
+.about__sticker {
+  position: absolute;
+  padding: 10px 18px;
+  background: var(--c-cream);
+  color: var(--c-ink);
+  border: 2px solid var(--c-ink);
+  border-radius: var(--radius-pill);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+}
+.about__sticker--1 {
+  top: 8%; right: -8%;
+  transform: rotate(8deg);
+  background: var(--c-pink);
+  color: var(--c-cream);
+}
+.about__sticker--2 {
+  bottom: 12%; left: -6%;
+  transform: rotate(-6deg);
+}
+
+.about__text p {
+  font-size: 18px;
+  margin: 0 0 18px;
+  color: color-mix(in srgb, var(--c-cream) 92%, var(--c-ink));
+}
+
+.about__stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 40px;
+  padding-top: 32px;
+  border-top: 1.5px solid color-mix(in srgb, var(--c-cream) 30%, transparent);
+}
+.about__stats div { display: flex; flex-direction: column; }
+.about__stats strong {
+  font-family: var(--ff-display);
+  font-weight: 600;
+  font-size: 40px;
+  color: var(--c-cream);
+}
+.about__stats span {
+  font-size: 13px;
+  opacity: 0.75;
+  letter-spacing: 0.04em;
+}

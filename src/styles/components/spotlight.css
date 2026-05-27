@@ -1,0 +1,48 @@
+/* =========================================================
+   spotlight.css — overlay sombre avec 2 ronds clairs
+   Position et rayon pilotés par JS via custom properties :
+     --spot1-x / --spot1-y / --spot1-radius
+     --spot2-x / --spot2-y / --spot2-radius
+     --spot-shadow    (opacité du noir)
+     --spot-sharpness (dureté du dégradé)
+   Les 2 spots sont combinés via mask-composite: intersect
+   (donc l'UNION des 2 centres transparents reste visible).
+   ========================================================= */
+
+.spotlight {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 60;
+  opacity: 0;            /* éteint tant que pas d'interaction avec la galerie */
+  background: rgba(20, 17, 15, var(--spot-shadow, 0.55));
+  transition: opacity 1.2s var(--ease);
+
+  /* Point de transition transparent → noir, piloté par la netteté.
+     sharpness 0 → début du dégradé à 30% (très flou)
+     sharpness 1 → début du dégradé à 92% (très net) */
+  --inner-edge: calc((30 + var(--spot-sharpness, 0.6) * 62) * 1%);
+
+  -webkit-mask-image:
+    radial-gradient(
+      circle var(--spot1-radius, 220px) at var(--spot1-x, 50%) var(--spot1-y, 50%),
+      transparent 0%, transparent var(--inner-edge), black 100%
+    ),
+    radial-gradient(
+      circle var(--spot2-radius, 130px) at var(--spot2-x, 60%) var(--spot2-y, 40%),
+      transparent 0%, transparent var(--inner-edge), black 100%
+    );
+  mask-image:
+    radial-gradient(
+      circle var(--spot1-radius, 220px) at var(--spot1-x, 50%) var(--spot1-y, 50%),
+      transparent 0%, transparent var(--inner-edge), black 100%
+    ),
+    radial-gradient(
+      circle var(--spot2-radius, 130px) at var(--spot2-x, 60%) var(--spot2-y, 40%),
+      transparent 0%, transparent var(--inner-edge), black 100%
+    );
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+}
+.spotlight.is-active            { opacity: 1; }
+.spotlight.spotlight--off       { opacity: 0; }
