@@ -1,0 +1,103 @@
+/* =========================================================
+   patterns.css — décorations visuelles scope NOA uniquement
+   Damier + polka dots + swirls (vague ondulée).
+   Le thème "default" reste 100% vierge de ces patterns.
+   Activé via [data-theme="noa"] sur <html>.
+   ========================================================= */
+
+/* Couleurs additionnelles de la DA, disponibles uniquement en mode NOA */
+[data-theme="noa"] {
+  --c-yellow:    #ffd85b;
+  --c-pink-soft: #fdaad6;
+}
+
+/* =====================================================
+   DAMIER — coin haut-gauche du hero, vert forêt + framboise
+   ===================================================== */
+[data-theme="noa"] .hero__decor--tile-grid {
+  width: 260px;
+  height: 260px;
+  background-image:
+    conic-gradient(
+      from 0deg,
+      var(--c-pink)  0%   25%,
+      var(--c-green) 25%  50%,
+      var(--c-pink)  50%  75%,
+      var(--c-green) 75% 100%
+    );
+  background-size: 32px 32px;
+  background-repeat: repeat;
+  opacity: 0.45;
+  border-bottom-right-radius: 50% 30%;
+}
+
+/* =====================================================
+   POLKA DOTS — patch décoratif en bas-droite du hero
+   ===================================================== */
+[data-theme="noa"] .hero {
+  position: relative;
+}
+[data-theme="noa"] .hero::after {
+  content: "";
+  position: absolute;
+  bottom: clamp(20px, 4vh, 60px);
+  right: clamp(20px, 5vw, 80px);
+  width: clamp(140px, 22vw, 240px);
+  height: 70px;
+  background-image: radial-gradient(var(--c-pink-soft) 4px, transparent 5px);
+  background-size: 24px 24px;
+  background-position: 0 0;
+  opacity: 0.9;
+  pointer-events: none;
+  z-index: 1;
+  transform: rotate(-4deg);
+  border-radius: 12px;
+}
+
+/* =====================================================
+   SWIRLS — vague ondulée en bordure haute du footer
+   On utilise une SVG monochrome avec mask + background-color
+   pour que la couleur suive --c-pink (réactive si swap).
+   ===================================================== */
+[data-theme="noa"] .footer {
+  position: relative;
+}
+[data-theme="noa"] .footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 22px;
+  background-color: var(--c-pink);
+
+  --swirl-svg: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 20' preserveAspectRatio='none'><path d='M0,10 C10,0 20,20 30,10 S50,0 60,10 S80,20 90,10 S100,0 110,10' fill='none' stroke='black' stroke-width='3' stroke-linecap='round'/></svg>");
+  -webkit-mask-image: var(--swirl-svg);
+  mask-image: var(--swirl-svg);
+  -webkit-mask-repeat: repeat-x;
+  mask-repeat: repeat-x;
+  -webkit-mask-size: 100px 22px;
+  mask-size: 100px 22px;
+
+  pointer-events: none;
+}
+
+/* =====================================================
+   BONUS — éclats jaunes ponctuels propres au thème NOA
+   ===================================================== */
+
+/* Le point du hero passe au jaune saturé (signature DA) */
+[data-theme="noa"] .hero__dot {
+  color: var(--c-yellow);
+}
+
+/* Les "✦" du marquee passent en jaune (au lieu du rose flashy par défaut) */
+[data-theme="noa"] .marquee__dot {
+  color: var(--c-yellow);
+}
+
+/* Badge "Best" du tarif featured en jaune sur ink (au lieu de pink flashy) */
+[data-theme="noa"] .price-card__badge {
+  background: var(--c-yellow);
+  color: var(--c-ink);
+}

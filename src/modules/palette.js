@@ -47,3 +47,9 @@ export function applyPalette(palette) {
     document.documentElement.style.setProperty(varName, hex);
   });
 }
+
+/* Propage le nom du thème actif sur <html> pour scoper des CSS spécifiques
+   (patterns, décorations, etc.) via [data-theme="<name>"]. */
+export function setTheme(name) {
+  document.documentElement.dataset.theme = name;
+}

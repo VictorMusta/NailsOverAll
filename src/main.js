@@ -12,7 +12,7 @@ import { loadState } from './utils/state.js';
 import { IS_MOBILE } from './utils/responsive.js';
 
 import { initInauguration } from './modules/inauguration.js';
-import { applyPalette } from './modules/palette.js';
+import { applyPalette, setTheme } from './modules/palette.js';
 import { initCarousels } from './modules/carousel.js';
 import { applySpotlight, initSpotlight } from './modules/spotlight.js';
 import { initReviews } from './modules/reviews.js';
@@ -20,10 +20,11 @@ import { initDebugPanel } from './modules/debug-panel.js';
 
 const state = loadState();
 
-/* CSS vars : on les applique avant d'attacher les listeners pour éviter
-   tout flash de couleurs par défaut. */
+/* CSS vars + thème actif appliqués avant tout le reste pour éviter
+   tout flash de couleurs ou patterns. */
 applyPalette(state.palette);
 applySpotlight(state.spotlight);
+setTheme(state.theme);
 
 initInauguration();
 /* Important : initCarousels() crée les clones AVANT initSpotlight() pour que

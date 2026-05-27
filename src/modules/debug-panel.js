@@ -6,7 +6,7 @@
    - sauvegarder le state via state.js
    ========================================================= */
 
-import { applyPalette, PALETTE_PRESETS } from './palette.js';
+import { applyPalette, setTheme, PALETTE_PRESETS } from './palette.js';
 import { applySpotlight } from './spotlight.js';
 import { saveState, STATE_DEFAULTS } from '../utils/state.js';
 
@@ -40,8 +40,10 @@ export function initDebugPanel(state) {
   resetBtn?.addEventListener('click', () => {
     state.palette   = { ...STATE_DEFAULTS.palette };
     state.spotlight = { ...STATE_DEFAULTS.spotlight };
+    state.theme     = STATE_DEFAULTS.theme;
     applyPalette(state.palette);
     applySpotlight(state.spotlight);
+    setTheme(state.theme);
     saveState(state);
     syncPaletteInputs(panel, state);
     syncSpotInputs(spotInputs, state);
@@ -50,10 +52,13 @@ export function initDebugPanel(state) {
   /* ----- Presets ----- */
   panel.querySelectorAll('.debug__presets button').forEach((btn) => {
     btn.addEventListener('click', () => {
-      const preset = PALETTE_PRESETS[btn.dataset.preset];
+      const themeName = btn.dataset.preset;
+      const preset = PALETTE_PRESETS[themeName];
       if (!preset) return;
       state.palette = { ...preset };
+      state.theme   = themeName;
       applyPalette(state.palette);
+      setTheme(themeName);
       saveState(state);
       syncPaletteInputs(panel, state);
     });

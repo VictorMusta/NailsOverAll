@@ -36,5 +36,8 @@
 @import url('./components/spotlight.css');
 @import url('./components/debug.css');
 
+/* ---------- Patterns thématiques (scope [data-theme="noa"]) ---------- */
+@import url('./components/patterns.css');
+
 /* ---------- Responsive (dernier pour surcharger) ---------- */
 @import url('./responsive/mobile.css');

@@ -20,6 +20,9 @@ export const STATE_DEFAULTS = Object.freeze({
     sharpness:  60,   // % (0 = très flou, 100 = très net)
     smoothness: 4,    // /100 = lerp speed par frame
   },
+  /* Nom du thème actif. Propage data-theme sur <html> et permet aux
+     CSS de scoper des patterns décoratifs à un thème spécifique. */
+  theme: 'default',
 });
 
 export function loadState() {
@@ -30,6 +33,7 @@ export function loadState() {
     return {
       palette:   { ...STATE_DEFAULTS.palette,   ...(parsed.palette   ?? {}) },
       spotlight: { ...STATE_DEFAULTS.spotlight, ...(parsed.spotlight ?? {}) },
+      theme:     parsed.theme ?? STATE_DEFAULTS.theme,
     };
   } catch {
     return structuredClone(STATE_DEFAULTS);
