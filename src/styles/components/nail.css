@@ -76,17 +76,16 @@
   display: block;
   width: 100%;
   height: auto;
-  /* mix-blend-mode: le blanc autour de l'ongle se fond dans le bg de l'items.
-     scaleY(-1) : flip vertical pour que le tip pointe vers le bas
-     (style "teeth hanging" comme la maquette d'origine). */
-  mix-blend-mode: multiply;
+  /* Les PNG ont maintenant un vrai canal alpha (fond transparent),
+     pas besoin de mix-blend-mode. scaleY(-1) flip vertical pour
+     que le tip pointe vers le bas (maquette d'origine "teeth"). */
   transform: scaleY(-1);
 }
 .nail.nail--photo:hover {
-  /* Pas de drop-shadow : tant que les PNG ont un fond blanc opaque
-     (pas d'alpha), drop-shadow dessine un rectangle moche. On garde
-     juste le lift + scale + rotation pour le feedback hover. */
+  /* Le drop-shadow suit maintenant la silhouette réelle de l'ongle
+     grâce à l'alpha de l'image — plus d'ombre rectangulaire. */
   transform: translateY(-12px) scale(1.08) rotate(-1.5deg);
+  filter: drop-shadow(6px 10px 0 var(--c-ink));
   z-index: 2;
 }
 
