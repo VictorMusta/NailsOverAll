@@ -175,8 +175,10 @@
 
 .works__hint {
   position: relative;
+  /* margin-top tient compte du translateY(60px) de polaroid--4 + une vraie
+     respiration en dessous pour pas que la photo cerises mange le texte. */
   text-align: center;
-  margin: 60px auto 0;
+  margin: 130px auto 0;
   font-family: var(--ff-display);
   font-style: italic;
   font-size: 16px;
