@@ -43,7 +43,6 @@ function renderSummary(summaryEl, data) {
     </div>
     <div>
       <p class="reviews__count">Basé sur <strong>${count}</strong> avis Google</p>
-      <span class="reviews__filter-badge">★ 4.5+ uniquement</span>
     </div>
     ${data.mapsUrl && data.mapsUrl !== '#'
       ? `<a class="btn btn--cream" href="${escapeHtml(data.mapsUrl)}" target="_blank" rel="noopener">Voir sur Google →</a>`
@@ -54,7 +53,7 @@ function renderSummary(summaryEl, data) {
 function renderCards(listEl, data) {
   const filtered = (data.reviews ?? []).filter((r) => (r.rating ?? 0) >= MIN_RATING);
   if (!filtered.length) {
-    listEl.innerHTML = `<p class="reviews__empty">Pas encore d'avis 4.5★+. Reviens bientôt.</p>`;
+    listEl.innerHTML = `<p class="reviews__empty">Pas encore d'avis. Reviens bientôt.</p>`;
     return;
   }
   listEl.innerHTML = filtered.map((r) => `
