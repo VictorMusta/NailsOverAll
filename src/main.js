@@ -16,6 +16,7 @@ import { applyPalette, setTheme } from './modules/palette.js';
 import { initCarousels } from './modules/carousel.js';
 import { applySpotlight, initSpotlight } from './modules/spotlight.js';
 import { initReviews } from './modules/reviews.js';
+import { initWorks } from './modules/works.js';
 import { initDebugPanel } from './modules/debug-panel.js';
 
 const state = loadState();
@@ -30,8 +31,12 @@ initInauguration();
 /* Important : initCarousels() crée les clones AVANT initSpotlight() pour que
    les listeners du spotlight les voient. */
 initCarousels();
-initReviews();
+initReviews();              // fire-and-forget : pas de hover handlers à attacher
 initDebugPanel(state);
+
+/* On attend que les polaroids dynamiques soient rendus avant le spotlight,
+   sinon attachPolaroidListeners() les rate. Top-level await OK en module ES. */
+await initWorks();
 
 /* Pas de spotlight sur tactile : pas de hover, pas d'utilité,
    et on économise la boucle RAF + les listeners. */

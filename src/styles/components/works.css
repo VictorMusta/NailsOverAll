@@ -28,24 +28,36 @@
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: clamp(24px, 4vw, 60px);
+  gap: clamp(40px, 5vw, 80px) clamp(24px, 4vw, 60px);
   align-items: center;
 }
 @media (max-width: 820px) {
   .works__grid { grid-template-columns: 1fr; gap: 50px; }
 }
 
-/* ---------- Polaroïd ---------- */
+.works__loading {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: var(--c-ink-soft);
+  font-style: italic;
+  padding: 40px 0;
+}
+
+/* ---------- Polaroïd (cliquable vers le post Instagram) ---------- */
 .polaroid {
   position: relative;
+  display: block;
   margin: 0;
   background: var(--c-cream);
   border: 2.5px solid var(--c-ink);
   padding: 16px 16px 0;
   box-shadow: 10px 10px 0 var(--c-ink);
   cursor: pointer;
+  text-decoration: none;
+  color: inherit;
   transition: transform .5s var(--ease), box-shadow .5s var(--ease);
 }
+/* 4 variantes pour donner du rythme : rotations + offsets + couleurs d'ombre alternées */
 .polaroid--1 {
   transform: rotate(-3deg);
   justify-self: end;
@@ -58,9 +70,43 @@
   max-width: 460px;
   box-shadow: 10px 10px 0 var(--c-blue);
 }
+.polaroid--3 {
+  transform: rotate(2deg) translateY(-20px);
+  justify-self: end;
+  max-width: 460px;
+  box-shadow: 10px 10px 0 var(--c-green);
+}
+.polaroid--4 {
+  transform: rotate(-3.5deg) translateY(60px);
+  justify-self: start;
+  max-width: 460px;
+  box-shadow: 10px 10px 0 var(--c-pink);
+}
 .polaroid:hover {
   transform: rotate(0) translateY(0) scale(1.02);
   box-shadow: 16px 18px 0 var(--c-ink);
+}
+
+/* Badge Instagram en coin du cadre (toujours visible, vif au hover) */
+.polaroid__instagram {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 32px;
+  height: 32px;
+  background: rgba(20, 17, 15, 0.65);
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  color: var(--c-cream);
+  z-index: 3;
+  transition: background .25s var(--ease), transform .25s var(--ease);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+.polaroid:hover .polaroid__instagram {
+  background: var(--c-pink);
+  transform: scale(1.12) rotate(-6deg);
 }
 
 .polaroid__frame {
