@@ -31,7 +31,7 @@
   font-weight: 400;
   color: var(--c-pink);
 }
-.hero__dot { color: var(--c-yellow); }
+.hero__dot { color: var(--c-green); }
 .hero__lede {
   font-size: 20px;
   max-width: 38ch;

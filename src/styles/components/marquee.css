@@ -20,7 +20,7 @@
   animation: marquee 28s linear infinite;
   width: max-content;
 }
-.marquee__dot { color: var(--c-yellow); }
+.marquee__dot { color: var(--c-pink); }
 
 @keyframes marquee {
   from { transform: translateX(0); }
