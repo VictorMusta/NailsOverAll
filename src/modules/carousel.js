@@ -62,22 +62,29 @@ function setupDesktopCarousel({ carousel, viewport, prev, next, dotsBar, origina
       d.classList.toggle('is-active', i === activeIdx));
   };
 
+  /* Centre une slide via viewport.scrollLeft directement — NE déclenche pas
+     de scroll vertical de la page (contrairement à scrollIntoView qui, sur
+     un élément below-the-fold, fait remonter la page jusqu'au carrousel). */
+  const centerSlide = (target, behavior = 'smooth') => {
+    if (!target) return;
+    const left = target.offsetLeft + target.offsetWidth / 2 - viewport.clientWidth / 2;
+    viewport.scrollTo({ left, behavior });
+  };
+
   const goTo = (idx) => {
     if (useInfinite) {
       if (idx >= originalSets.length) {
-        const fc = viewport.querySelector('.nailset--clone[data-clone-of="0"]');
-        fc?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        centerSlide(viewport.querySelector('.nailset--clone[data-clone-of="0"]'));
         return;
       }
       if (idx < 0) {
         const lastIdx = originalSets.length - 1;
-        const lc = viewport.querySelector(`.nailset--clone[data-clone-of="${lastIdx}"]`);
-        lc?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        centerSlide(viewport.querySelector(`.nailset--clone[data-clone-of="${lastIdx}"]`));
         return;
       }
     }
     const clamped = Math.max(0, Math.min(originalSets.length - 1, idx));
-    originalSets[clamped].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    centerSlide(originalSets[clamped]);
   };
 
   prev?.addEventListener('click', () => goTo(activeIdx - 1));
@@ -111,11 +118,8 @@ function setupDesktopCarousel({ carousel, viewport, prev, next, dotsBar, origina
     if (!useInfinite) return;
     const closest = findClosestSet();
     if (!closest?.classList.contains('nailset--clone')) return;
-    const origIdx   = Number(closest.dataset.cloneOf);
-    const actualSet = originalSets[origIdx];
-    viewport.style.scrollBehavior = 'auto';
-    actualSet.scrollIntoView({ block: 'nearest', inline: 'center' });
-    requestAnimationFrame(() => { viewport.style.scrollBehavior = ''; });
+    const origIdx = Number(closest.dataset.cloneOf);
+    centerSlide(originalSets[origIdx], 'instant');
   };
 
   let scrollRaf = null;
@@ -132,9 +136,10 @@ function setupDesktopCarousel({ carousel, viewport, prev, next, dotsBar, origina
   }, { passive: true });
 
   setActive(0);
-  requestAnimationFrame(() => {
-    originalSets[0].scrollIntoView({ behavior: 'instant', block: 'nearest', inline: 'center' });
-  });
+  /* On positionne le scroll horizontal interne du carrousel sur le 1er
+     original sans toucher au scroll vertical de la page (sinon, à l'arrivée
+     sur le site, la page se ferait scroller jusqu'à la galerie). */
+  requestAnimationFrame(() => centerSlide(originalSets[0], 'instant'));
 }
 
 function cloneEdges(viewport, originalSets) {
