@@ -99,10 +99,10 @@ export function initSpotlight(state) {
   attachScrollGuard();
 }
 
-/* Désactive le spot pendant le scroll, le réveille uniquement quand
-   la souris bouge après la fin du scroll (et que le curseur est en zone). */
+/* Désactive le spot pendant le scroll, le rallume automatiquement 500ms
+   après que le scroll s'est arrêté (si le curseur est toujours en zone). */
 function attachScrollGuard() {
-  const SCROLL_END_DELAY = 200;
+  const SCROLL_END_DELAY = 500;
 
   window.addEventListener('scroll', () => {
     scrollState.isScrolling = true;
@@ -110,17 +110,9 @@ function attachScrollGuard() {
     clearTimeout(scrollState.scrollEndTimer);
     scrollState.scrollEndTimer = setTimeout(() => {
       scrollState.isScrolling = false;
-      /* Pas d'auto-reactivation : on attend un mousemove explicite. */
+      /* Auto-reactivation si le curseur est en zone (#gallery / #works). */
+      if (hoverState.inScope) activate();
     }, SCROLL_END_DELAY);
-  }, { passive: true });
-
-  /* Mouvement souris après scroll → on rallume si on est en zone. */
-  window.addEventListener('mousemove', () => {
-    if (scrollState.isScrolling) return;
-    if (!hoverState.inScope) return;
-    /* activate() est idempotent (classList.add d'une classe déjà présente
-       est un no-op) donc on peut l'appeler à chaque mousemove sans souci. */
-    activate();
   }, { passive: true });
 }
 
