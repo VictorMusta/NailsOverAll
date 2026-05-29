@@ -100,6 +100,18 @@
     box-shadow: 10px 14px 0 var(--c-ink);
   }
 
+  /* Pour les ongles photo (PNG avec alpha), l'ombre carrée de la div
+     ne correspond pas à la silhouette réelle du PNG → on bascule sur
+     drop-shadow qui suit l'alpha de l'image (forme nail). */
+  .nail.nail--photo {
+    box-shadow: none;
+    transition: transform 0.55s var(--ease), filter 0.55s var(--ease);
+  }
+  .nail.nail--photo.is-active {
+    box-shadow: none;
+    filter: drop-shadow(8px 12px 0 var(--c-ink));
+  }
+
   .nail.nail--shape-stiletto {
     border-bottom-left-radius: 50% 60%;
     border-bottom-right-radius: 50% 60%;
